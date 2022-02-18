@@ -8,7 +8,18 @@ class DropdownController extends Controller
 {
 	public function index()
 	{
-		$countries = DB::table("countries")->pluck("name","id");
+		// $countries = DB::table("countries")->pluck("name","id");
+
+		//$countries = DB::table("locations")->get();
+
+		$countries = DB::table('locations')->orderBy('district')->get()->groupBy(function($item) {
+            return $item->district;
+        });
+
+				dd($countries);
+
+
+			$countries = json_encode($request->sku);
 		return view('dropdown',compact('countries'));
 	}
 

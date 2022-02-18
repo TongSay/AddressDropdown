@@ -21,13 +21,25 @@
     <label for="st">St:</label>
     <input name="st" id="st" type="address" class="form-control"/>
 </div>
+
+@foreach ( $countries as $country){
+ {{ $country-> }}
+ 
+  
+}
+
+
+
+  
+@endforeach
+
     <div class="form-group">
       <label for="country">City:</label>
 	  <select id="country" name="category_id" class="form-control">
         <option value="" selected disabled>Select City</option>
-         @foreach($countries as $key => $country)
-         <option value="{{$key}}"> {{$country}}</option>
-         @endforeach
+         
+         <option value="">  </option>
+         
          </select>
     </div>
     
