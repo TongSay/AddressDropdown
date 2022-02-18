@@ -22,23 +22,21 @@
     <input name="st" id="st" type="address" class="form-control"/>
 </div>
 
-@foreach ( $countries as $country){
- {{ $country[0]->province }}
- 
-  
-}
 
-
-
-  
-@endforeach
 
     <div class="form-group">
       <label for="country">City:</label>
 	  <select id="country" name="category_id" class="form-control">
         <option value="" selected disabled>Select City</option>
-         
-         <option value="">  </option>
+         @foreach ( $countries as $key=>$country){
+         <option value="{{$key}}"> 
+          
+            {{-- {{ $country[0]->vallage }} --}}
+            {{ Str::replace('{', ' ', $country[0]->province) }}
+             
+          
+          </option> }
+          @endforeach
          
          </select>
     </div>
