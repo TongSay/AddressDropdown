@@ -23,7 +23,7 @@
 </div>
 
 @foreach ( $countries as $country){
- {{ $country-> }}
+ {{ $country[0]->province }}
  
   
 }
