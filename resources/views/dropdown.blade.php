@@ -24,15 +24,17 @@
 
 
 
+
+
     <div class="form-group">
       <label for="country">City:</label>
-	  <select id="country" name="category_id" class="form-control">
+	  <select id="country" name="pob" class="form-control">
         <option value="" selected disabled>Select City</option>
          @foreach ( $countries as $key=>$country){
          <option value="{{$key}}"> 
           
             {{-- {{ $country[0]->vallage }} --}}
-            {{ Str::replace('{', ' ', $country[0]->province) }}
+            {{ $country[0]->province }}
              
           
           </option> }
@@ -61,8 +63,9 @@
       if(res){
         $("#state").empty();
         $("#state").append('<option>Select State</option>');
-        $.each(res,function(key,value){
-          $("#state").append('<option value="'+key+'">'+value+'</option>');
+
+        $.each(res,function(key,states){
+          $("#state").append('<option value="'+key[0]+'">'+states[0]+'</option>');
         });
       
       }else{

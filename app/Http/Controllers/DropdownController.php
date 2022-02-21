@@ -21,15 +21,25 @@ class DropdownController extends Controller
 
 			// $countries = json_encode($request->district);
 
-		return view('dropdown',compact('countries'));
+
+
+		
+
+		return view('dropdown',compact('countries',));
 	}
 
 	public function getState(Request $request)
 	{
-		$states = DB::table("states")
-		->where("country_id",$request->country_id)
-		->pluck("name","id");
+		$states = DB::table("locations")
+		->orderBy('district')->get()->groupBy(function($item) {
+            return $item->district;
+        });
+		
 		return response()->json($states);
+		// return json_encode($request->district);
+		dd($states);
+
+		
 	}
 
 	public function getCity(Request $request)
